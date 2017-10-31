@@ -10,6 +10,10 @@ import training.chessington.model.Game;
 import training.chessington.view.ChessApp;
 
 public class Main extends Application {
+    
+    
+    
+    
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -28,3 +32,5 @@ public class Main extends Application {
         launch(args);
     }
 }
+
+
