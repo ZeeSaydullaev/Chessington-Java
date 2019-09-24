@@ -34,7 +34,6 @@ public class Pawn extends AbstractPiece {
         return moves;
     }
 
-
     private boolean isStartingPawnRow(Coordinates start) {
         if (start.getRow() == 1 && getColour() == PlayerColour.BLACK || start.getRow() == 6 && getColour() == PlayerColour.WHITE) {
             return true;

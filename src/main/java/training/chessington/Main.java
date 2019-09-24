@@ -26,9 +26,8 @@ public class Main extends Application {
         scene.setRoot(chessBoard);
         primaryStage.show();
         
-        //Hi Dan
+        //Hi Zee
     }
-
 
     public static void main(String[] args) {
         launch(args);
