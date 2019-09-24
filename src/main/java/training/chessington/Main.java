@@ -25,6 +25,8 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         scene.setRoot(chessBoard);
         primaryStage.show();
+        
+        //Hi Dan
     }
 
 
