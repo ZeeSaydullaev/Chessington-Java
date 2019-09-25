@@ -118,6 +118,29 @@ public class BishopTest {
         assertThat(moves).contains(new Move(coords, coords.plus(-3, 3)));
     }
     
+    @Test
+    public void bishopCannotMovePastIfPieceIsInTheWay() {
+        // Arrange
+        Board board = Board.empty();
+        
+        Piece blackBishop = new Bishop(PlayerColour.BLACK);
+        Coordinates blackCoords = new Coordinates(3, 4);
+        board.placePiece(blackCoords, blackBishop);
+        
+        Piece whiteBishop = new Bishop(PlayerColour.WHITE);
+        Coordinates whiteCoords = new Coordinates(4, 5);
+        board.placePiece(whiteCoords, whiteBishop);
+        
+        // Act
+        List<Move> blackMoves = blackBishop.getAllowedMoves(blackCoords, board);
+        List<Move> whiteMoves = whiteBishop.getAllowedMoves(whiteCoords, board);
+        
+        // Assert
+        assertThat(blackMoves).isEmpty();
+        assertThat(whiteMoves).isEmpty();
+    }
+    
+    
     
     
 }
