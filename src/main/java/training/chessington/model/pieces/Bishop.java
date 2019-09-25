@@ -19,32 +19,14 @@ public class Bishop extends AbstractPiece {
         List<Move> moves = new ArrayList<>();
  
         List<Coordinates> diagonals = new ArrayList<>();
-        diagonals.add(from.plus(1, -1));
-        diagonals.add(from.plus(1,1));
-        diagonals.add(from.plus(-1,-1));
-        diagonals.add(from.plus(-1,1));
-        diagonals.add(from.plus(2, -2));
-        diagonals.add(from.plus(2,2));
-        diagonals.add(from.plus(-2,-2));
-        diagonals.add(from.plus(-2,2));
-        diagonals.add(from.plus(3, -3));
-        diagonals.add(from.plus(3,3));
-        diagonals.add(from.plus(-3,-3));
-        diagonals.add(from.plus(-3,3));
-        diagonals.add(from.plus(4, -4));
-        diagonals.add(from.plus(4,4));
-        diagonals.add(from.plus(-4,-4));
-        diagonals.add(from.plus(-4,4));
-        diagonals.add(from.plus(5, -5));
-        diagonals.add(from.plus(5,5));
-        diagonals.add(from.plus(-5,-5));
-        diagonals.add(from.plus(-5,5));
-        diagonals.add(from.plus(6, -6));
-        diagonals.add(from.plus(6,6));
-        diagonals.add(from.plus(-6,-6));
-        diagonals.add(from.plus(-6,6));
 
-        
+        for(int i = 1 ; i <= 7; i++){
+            diagonals.add(from.plus(i, i));
+            diagonals.add(from.plus(-i, i));
+            diagonals.add(from.plus(i, -i));
+            diagonals.add(from.plus(-i, -i));
+        }
+
         for(Coordinates coords : diagonals){
             if(isValidMove(coords)) {
                 moves.add(new Move(from, coords));
