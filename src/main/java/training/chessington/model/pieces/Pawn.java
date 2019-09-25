@@ -43,5 +43,11 @@ public class Pawn extends AbstractPiece {
     private boolean isValidMove(Coordinates to) {
         return  (to.getRow() >= 0 && to.getRow() <= 7) && (to.getCol() >= 0 && to.getCol() <= 7) ;
     }
+    
+    private boolean canCapture(Coordinates to, Board spot)  {
+        Coordinates moveDiagonallyRight = to.plus(1,1);
+        Coordinates moveDiagonallyLeft = to.plus(1,-1);
+        return (spot.get(moveDiagonallyRight) != null || spot.get(moveDiagonallyLeft) != null);
+    }
 
 }
