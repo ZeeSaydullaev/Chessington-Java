@@ -23,16 +23,23 @@ public class Bishop extends AbstractPiece {
         diagonals.add(from.plus(1,1));
         diagonals.add(from.plus(-1,-1));
         diagonals.add(from.plus(-1,1));
+        diagonals.add(from.plus(2, -2));
+        diagonals.add(from.plus(2,2));
+        diagonals.add(from.plus(-2,-2));
+        diagonals.add(from.plus(-2,2));
         
         for(Coordinates coords : diagonals){
-            moves.add(new Move(from, coords));
+            if(isValidMove(coords)) {
+                moves.add(new Move(from, coords));
+            }
         }
-        
+
         return moves;
         
-        
-        
-        
+    }
+
+    private boolean isValidMove(Coordinates to) {
+        return  (to.getRow() >= 0 && to.getRow() <= 7) && (to.getCol() >= 0 && to.getCol() <= 7) ;
     }
 
 }
