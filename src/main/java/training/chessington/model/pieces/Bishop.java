@@ -27,6 +27,26 @@ public class Bishop extends AbstractPiece {
         diagonals.add(from.plus(2,2));
         diagonals.add(from.plus(-2,-2));
         diagonals.add(from.plus(-2,2));
+        diagonals.add(from.plus(3, -3));
+        diagonals.add(from.plus(3,3));
+        diagonals.add(from.plus(-3,-3));
+        diagonals.add(from.plus(-3,3));
+        diagonals.add(from.plus(4, -4));
+        diagonals.add(from.plus(4,4));
+        diagonals.add(from.plus(-4,-4));
+        diagonals.add(from.plus(-4,4));
+        diagonals.add(from.plus(5, -5));
+        diagonals.add(from.plus(5,5));
+        diagonals.add(from.plus(-5,-5));
+        diagonals.add(from.plus(-5,5));
+        diagonals.add(from.plus(6, -6));
+        diagonals.add(from.plus(6,6));
+        diagonals.add(from.plus(-6,-6));
+        diagonals.add(from.plus(-6,6));
+        diagonals.add(from.plus(7, -7));
+        diagonals.add(from.plus(7,7));
+        diagonals.add(from.plus(-7,-7));
+        diagonals.add(from.plus(-7,7));
         
         for(Coordinates coords : diagonals){
             if(isValidMove(coords)) {
@@ -35,7 +55,7 @@ public class Bishop extends AbstractPiece {
         }
 
         return moves;
-        
+
     }
 
     private boolean isValidMove(Coordinates to) {
