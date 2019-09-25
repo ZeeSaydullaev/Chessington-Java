@@ -19,7 +19,7 @@ public class Pawn extends AbstractPiece {
 
         List<Move> moves = new ArrayList<>();
 
-        int direction = getColour() == PlayerColour.WHITE ? -1 : 1;
+        int direction = getDirection();
         Coordinates moveOneSquare = from.plus(direction, 0);
 
         
@@ -31,6 +31,7 @@ public class Pawn extends AbstractPiece {
                 Move initMove = new Move(from, from.plus(2 * direction, 0));
                 moves.add(initMove);
             }
+            captureDiagonally(from, board, moves);
         }
         
         return moves;
@@ -39,31 +40,28 @@ public class Pawn extends AbstractPiece {
     private boolean isStartingPawnRow(Coordinates start) {
         return (start.getRow() == 1 && getColour() == PlayerColour.BLACK || start.getRow() == 6 && getColour() == PlayerColour.WHITE);
     }
-    
-    
+
     private boolean isValidMove(Coordinates to) {
         return  (to.getRow() >= 0 && to.getRow() <= 7) && (to.getCol() >= 0 && to.getCol() <= 7) ;
     }
     
-    private void canCapture(Coordinates to, Board spot, List<Move> moves)  {
-        Coordinates moveDiagonallyRight = to.plus(1,1);
-        Coordinates moveDiagonallyLeft = to.plus(1,-1);
-        Coordinates moveDiagonallyUpRight = to.plus(-1,1);
-        Coordinates moveDiagonallyUpLeft = to.plus(-1,-1);
+    private void captureDiagonally(Coordinates from, Board board, List<Move> moves)  {
 
-        if (spot.get(moveDiagonallyRight) != null) {
-            Move moveDR = new Move(to, moveDiagonallyRight);
-            moves.add(moveDR);
-        } else if(spot.get(moveDiagonallyLeft) != null) {
-            Move moveDL = new Move(to, moveDiagonallyLeft);
-            moves.add(moveDL);
-        } else if (spot.get(moveDiagonallyUpRight) != null) {
-            Move moveDUR = new Move(to, moveDiagonallyUpRight);
-            moves.add(moveDUR);
-        } else if (spot.get(moveDiagonallyUpLeft) != null) {
-            Move moveDUL = new Move(to, moveDiagonallyUpLeft);
-            moves.add(moveDUL);
+        if(isValidMove(from)) {
+            Coordinates DiagonallyRight = from.plus(getDirection(),1);
+            Coordinates DiagonallyLeft = from.plus(getDirection(),-1);
+
+            if (board.get(DiagonallyRight) != null && getColour() != board.get(DiagonallyRight).getColour()) {
+                Move moveDiagonallyRight = new Move(from, DiagonallyRight);
+                moves.add(moveDiagonallyRight);
+            } else if(board.get(DiagonallyLeft) != null && getColour() != board.get(DiagonallyRight).getColour()) {
+                Move moveDiagonallyLeft = new Move(from, DiagonallyLeft);
+                moves.add(moveDiagonallyLeft);
+            }
         }
     }
 
+    private int getDirection(){
+        return getColour() == PlayerColour.WHITE ? -1 : 1;
+    }
 }
