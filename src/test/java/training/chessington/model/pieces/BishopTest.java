@@ -27,7 +27,8 @@ public class BishopTest {
         assertThat(moves).contains(new Move(coords, coords.plus(1, 1)));
         assertThat(moves).contains(new Move(coords, coords.plus(1, -1)));
         assertThat(moves).contains(new Move(coords, coords.plus(-1, -1)));
-        assertThat(moves).contains(new Move(coords, coords.plus(-1, 1)));    }
+        assertThat(moves).contains(new Move(coords, coords.plus(-1, 1)));
+        }
     
     @Test
     public void blackBishopsCanMoveOneSquare() {
