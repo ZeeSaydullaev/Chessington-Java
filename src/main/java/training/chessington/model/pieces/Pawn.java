@@ -21,9 +21,9 @@ public class Pawn extends AbstractPiece {
 
         int direction = getColour() == PlayerColour.WHITE ? -1 : 1;
         Coordinates moveOneSquare = from.plus(direction, 0);
+
         
         if(isValidMove(moveOneSquare) && board.get(moveOneSquare) == null) {
-            canCapture(from,board,moves);
             Move moveForward = new Move(from, moveOneSquare);
             moves.add(moveForward);
 
@@ -48,6 +48,8 @@ public class Pawn extends AbstractPiece {
     private void canCapture(Coordinates to, Board spot, List<Move> moves)  {
         Coordinates moveDiagonallyRight = to.plus(1,1);
         Coordinates moveDiagonallyLeft = to.plus(1,-1);
+        Coordinates moveDiagonallyUpRight = to.plus(-1,1);
+        Coordinates moveDiagonallyUpLeft = to.plus(-1,-1);
 
         if (spot.get(moveDiagonallyRight) != null) {
             Move moveDR = new Move(to, moveDiagonallyRight);
@@ -55,6 +57,12 @@ public class Pawn extends AbstractPiece {
         } else if(spot.get(moveDiagonallyLeft) != null) {
             Move moveDL = new Move(to, moveDiagonallyLeft);
             moves.add(moveDL);
+        } else if (spot.get(moveDiagonallyUpRight) != null) {
+            Move moveDUR = new Move(to, moveDiagonallyUpRight);
+            moves.add(moveDUR);
+        } else if (spot.get(moveDiagonallyUpLeft) != null) {
+            Move moveDUL = new Move(to, moveDiagonallyUpLeft);
+            moves.add(moveDUL);
         }
     }
 
