@@ -136,8 +136,8 @@ public class BishopTest {
         List<Move> whiteMoves = whiteBishop.getAllowedMoves(whiteCoords, board);
         
         // Assert
-        assertThat(blackMoves).isEmpty();
-        assertThat(whiteMoves).isEmpty();
+        assertThat(blackMoves).doesNotContain(new Move(blackCoords, blackCoords.plus(3,5)));
+        assertThat(whiteMoves).doesNotContain(new Move(whiteCoords, whiteCoords.plus(6,5)));
     }
     
     
