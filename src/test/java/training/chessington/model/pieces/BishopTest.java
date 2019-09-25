@@ -94,8 +94,8 @@ public class BishopTest {
         List<Move> moves = bishop.getAllowedMoves(coords, board);
         
         // Assert
-        assertThat(moves).contains(new Move(coords, coords.plus(4, -4)));
-        assertThat(moves).contains(new Move(coords, coords.plus(4, 4)));
+        assertThat(moves).contains(new Move(coords, coords.plus(4, -3)));
+        assertThat(moves).contains(new Move(coords, coords.plus(4, 3)));
         assertThat(moves).contains(new Move(coords, coords.plus(-3, -3)));
         assertThat(moves).contains(new Move(coords, coords.plus(-3, 3)));
     }
