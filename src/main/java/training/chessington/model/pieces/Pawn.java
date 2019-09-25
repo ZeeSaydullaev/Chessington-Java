@@ -23,6 +23,7 @@ public class Pawn extends AbstractPiece {
         Coordinates moveOneSquare = from.plus(direction, 0);
         
         if(isValidMove(moveOneSquare) && board.get(moveOneSquare) == null) {
+            canCapture(from,board,moves);
             Move moveForward = new Move(from, moveOneSquare);
             moves.add(moveForward);
 
@@ -44,10 +45,17 @@ public class Pawn extends AbstractPiece {
         return  (to.getRow() >= 0 && to.getRow() <= 7) && (to.getCol() >= 0 && to.getCol() <= 7) ;
     }
     
-    private boolean canCapture(Coordinates to, Board spot)  {
+    private void canCapture(Coordinates to, Board spot, List<Move> moves)  {
         Coordinates moveDiagonallyRight = to.plus(1,1);
         Coordinates moveDiagonallyLeft = to.plus(1,-1);
-        return (spot.get(moveDiagonallyRight) != null || spot.get(moveDiagonallyLeft) != null);
+
+        if (spot.get(moveDiagonallyRight) != null) {
+            Move moveDR = new Move(to, moveDiagonallyRight);
+            moves.add(moveDR);
+        } else if(spot.get(moveDiagonallyLeft) != null) {
+            Move moveDL = new Move(to, moveDiagonallyLeft);
+            moves.add(moveDL);
+        }
     }
 
 }
