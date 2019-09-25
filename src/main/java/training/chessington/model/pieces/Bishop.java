@@ -43,10 +43,7 @@ public class Bishop extends AbstractPiece {
         diagonals.add(from.plus(6,6));
         diagonals.add(from.plus(-6,-6));
         diagonals.add(from.plus(-6,6));
-        diagonals.add(from.plus(7, -7));
-        diagonals.add(from.plus(7,7));
-        diagonals.add(from.plus(-7,-7));
-        diagonals.add(from.plus(-7,7));
+
         
         for(Coordinates coords : diagonals){
             if(isValidMove(coords)) {
