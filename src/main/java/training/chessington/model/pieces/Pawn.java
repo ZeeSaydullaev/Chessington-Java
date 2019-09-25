@@ -20,10 +20,10 @@ public class Pawn extends AbstractPiece {
         List<Move> moves = new ArrayList<>();
 
         int direction = getColour() == PlayerColour.WHITE ? -1 : 1;
+        Coordinates moveOneSquare = from.plus(direction, 0);
         
-        
-        if(board.get(from.plus(direction,0)) == null) {
-            Move moveForward = new Move(from, from.plus(direction, 0));
+        if(isValidMove(moveOneSquare) && board.get(moveOneSquare) == null) {
+            Move moveForward = new Move(from, moveOneSquare);
             moves.add(moveForward);
 
             if (isStartingPawnRow(from) && board.get(from.plus(2 * direction,0)) == null) {
@@ -40,8 +40,8 @@ public class Pawn extends AbstractPiece {
     }
     
     
-    private boolean isValidMove(Coordinates from) {
-        return  (from.getRow() >= 0 && from.getRow() <= 7) && (from.getCol() >= 0 && from.getCol() <= 7) ;
+    private boolean isValidMove(Coordinates to) {
+        return  (to.getRow() >= 0 && to.getRow() <= 7) && (to.getCol() >= 0 && to.getCol() <= 7) ;
     }
 
 }
