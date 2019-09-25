@@ -17,25 +17,22 @@ public class Bishop extends AbstractPiece {
     public List<Move> getAllowedMoves(Coordinates from, Board board) {
 
         List<Move> moves = new ArrayList<>();
-
-        Coordinates moveOneSquareDL = from.plus(1, -1);
-        Coordinates moveOneSquareDR = from.plus(1, 1);
-        Coordinates moveOneSquareUL = from.plus(-1, -1);
-        Coordinates moveOneSquareUR = from.plus(-1, 1);
-
-        Move moveForwardL = new Move(from, moveOneSquareDL);
-        Move moveForwardR = new Move(from, moveOneSquareDR);
-        Move moveBackwardsL = new Move(from, moveOneSquareUL);
-        Move moveBackwardsR = new Move(from, moveOneSquareUR);
-
-
-        moves.add(moveForwardL);
-        moves.add(moveForwardR);
-        moves.add(moveBackwardsL);
-        moves.add(moveBackwardsR);
-
-
+ 
+        List<Coordinates> diagonals = new ArrayList<>();
+        diagonals.add(from.plus(1, -1));
+        diagonals.add(from.plus(1,1));
+        diagonals.add(from.plus(-1,-1));
+        diagonals.add(from.plus(-1,1));
+        
+        for(Coordinates coords : diagonals){
+            moves.add(new Move(from, coords));
+        }
+        
         return moves;
+        
+        
+        
+        
     }
 
 }
