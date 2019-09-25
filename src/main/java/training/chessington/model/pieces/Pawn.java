@@ -29,7 +29,7 @@ public class Pawn extends AbstractPiece {
                 Move initMove = new Move(from, from.plus(2 * direction, 0));
                 moves.add(initMove);
             }
-        }
+        }//Helloooooooo
 
         return moves;
     }
