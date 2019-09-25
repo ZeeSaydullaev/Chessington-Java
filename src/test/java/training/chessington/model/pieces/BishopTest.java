@@ -46,6 +46,40 @@ public class BishopTest {
         assertThat(moves).contains(new Move(coords, coords.plus(-1, -1)));
         assertThat(moves).contains(new Move(coords, coords.plus(-1, 1)));
     }
+
+    @Test
+    public void whiteBishopsCanMoveTwoSquares() {
+        // Arrange
+        Board board = Board.empty();
+        Piece bishop = new Bishop(PlayerColour.WHITE);
+        Coordinates coords = new Coordinates(3, 4);
+        board.placePiece(coords, bishop);
+
+        // Act
+        List<Move> moves = bishop.getAllowedMoves(coords, board);
+
+        // Assert
+        assertThat(moves).contains(new Move(coords, coords.plus(2, 2)));
+        assertThat(moves).contains(new Move(coords, coords.plus(2, -2)));
+        assertThat(moves).contains(new Move(coords, coords.plus(-2, -2)));
+        assertThat(moves).contains(new Move(coords, coords.plus(-2, 2)));    }
+
+    @Test
+    public void blackBishopsCanMoveTwoSquare() {
+        // Arrange
+        Board board = Board.empty();
+        Piece bishop = new Bishop(PlayerColour.WHITE);
+        Coordinates coords = new Coordinates(3, 4);
+        board.placePiece(coords, bishop);
+
+        // Act
+        List<Move> moves = bishop.getAllowedMoves(coords, board);
+
+        // Assert
+        assertThat(moves).contains(new Move(coords, coords.plus(2, 2)));
+        assertThat(moves).contains(new Move(coords, coords.plus(2, -2)));
+        assertThat(moves).contains(new Move(coords, coords.plus(-2, -2)));
+        assertThat(moves).contains(new Move(coords, coords.plus(-2, 2)));    }
     
     
     
