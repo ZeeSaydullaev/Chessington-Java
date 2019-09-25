@@ -1,5 +1,6 @@
 package training.chessington.model.pieces;
 
+import com.sun.corba.se.spi.transport.CorbaAcceptor;
 import training.chessington.model.Board;
 import training.chessington.model.Coordinates;
 import training.chessington.model.Move;
@@ -19,8 +20,8 @@ public class Pawn extends AbstractPiece {
         List<Move> moves = new ArrayList<>();
 
         int direction = getColour() == PlayerColour.WHITE ? -1 : 1;
-
-
+        
+        
         if(board.get(from.plus(direction,0)) == null) {
             Move moveForward = new Move(from, from.plus(direction, 0));
             moves.add(moveForward);
@@ -29,17 +30,18 @@ public class Pawn extends AbstractPiece {
                 Move initMove = new Move(from, from.plus(2 * direction, 0));
                 moves.add(initMove);
             }
-        }//Helloooooooo
-
+        }
+        
         return moves;
     }
 
     private boolean isStartingPawnRow(Coordinates start) {
-        if (start.getRow() == 1 && getColour() == PlayerColour.BLACK || start.getRow() == 6 && getColour() == PlayerColour.WHITE) {
-            return true;
-        } else {
-            return false;
-        }
+        return (start.getRow() == 1 && getColour() == PlayerColour.BLACK || start.getRow() == 6 && getColour() == PlayerColour.WHITE);
+    }
+    
+    
+    private boolean isValidMove(Coordinates from) {
+        return  (from.getRow() >= 0 && from.getRow() <= 7) && (from.getCol() >= 0 && from.getCol() <= 7) ;
     }
 
 }
